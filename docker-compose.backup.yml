@@ -53,16 +53,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  redash-migrator:
-    image: redash/redash:latest
-    depends_on:
-      - redash-postgres
-      - redis
-    environment:
-      REDASH_DATABASE_URL: postgresql://redash:redash_pass@redash-postgres/redash
-      REDASH_REDIS_URL: redis://redis:6379/0
-    command: create_db
-    restart: "no"
   redash-server:
     image: redash/redash:latest
     container_name: redash_server
@@ -74,11 +64,10 @@ services:
       PYTHONUNBUFFERED: 1
       GUNICORN_TIMEOUT: 120
     depends_on:
-      - redis
-      - redash-postgres
+      redash-migrator:
+        condition: service_completed_successfully
     command: server
     restart: unless-stopped
-
   redash-worker:
     image: redash/redash:latest
     container_name: redash_worker
