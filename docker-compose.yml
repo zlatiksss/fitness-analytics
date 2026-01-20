@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: fitness_postgres
+    environment:
+      POSTGRES_USER: fitness_user
+      POSTGRES_PASSWORD: fitness_pass
+      POSTGRES_DB: fitness
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:                  
+      test: ["CMD-SHELL", "pg_isready -U fitness_user -d fitness"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  generator:
+    build: ./generator
+    container_name: fitness_generator
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: fitness
+      DB_USER: fitness_user
+      DB_PASSWORD: fitness_pass
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
