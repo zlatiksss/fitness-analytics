@@ -10,8 +10,8 @@ C:\fitness-analytics
 │ ├── Dockerfile # Запись образа генератора
 │ ├── requirements.txt # Установка psycopg2-binary==2.9.9 в Dockerfile 
 │ └── fitness_generator.py 
-└── README.md 
-
+├──README.md 
+└── screens.png
 
 ## Быстрый запуск - преимущество докера
 
@@ -39,8 +39,13 @@ docker compose down
 # Полная очистка (удаление всех данных)
 docker compose down -v
 
+## После полного запуска системы, в браузере, переходим по следующей ссылке: http://localhost:8080
 
-## Быстрый запуск - преимущество докера
-Перейдём к просмотру дашборда:
-1. После полного запуска системы, в браузере, переходим по следующей ссылке: http://localhost:8080
-Попадём на страницу Redash, где и расположен дашборд с 4 визуализациями:
+## Перейдём к просмотру дашборда и их Query:
+![Query статистика активности](screens (1).png)
+![Query живой мониторинг](screens (2).png)
+![Query топ пользователей](screens (3).png)
+![Query последние события](screens (4).png)
+![Dashboards](screens (5).png)
+![Dashboards](screens (6).png)
+![Dashboards](screens (7).png)
