@@ -4,14 +4,14 @@
 Генерация данных → PostgreSQL → Redash + дашборды 
 
 ## Структура проекта
-C:\fitness-analytics
-├── docker-compose.yml # контейнер хранения системы
-├── generator/ # Генератор фитнес-данных 
-│ ├── Dockerfile # Запись образа генератора
-│ ├── requirements.txt # Установка psycopg2-binary==2.9.9 в Dockerfile 
-│ └── fitness_generator.py 
-├──README.md 
-└── screens.png
+C:\fitness-analytics\
+├── docker-compose.yml # контейнер хранения системы\
+├── generator/ # Генератор фитнес-данных \
+│ ├── Dockerfile # Запись образа генератора\
+│ ├── requirements.txt # Установка psycopg2-binary==2.9.9 в Dockerfile\ 
+│ └── fitness_generator.py\
+├──README.md\ 
+└── screens.png\
 
 ## Быстрый запуск - преимущество докера
 
@@ -41,7 +41,9 @@ docker compose down -v
 ## После полного запуска системы, в браузере, переходим по следующей ссылке: http://localhost:8080
 
 ## Перейдём к просмотру дашборда и их Query:
-![Query статистика активности](https://github.com/zlatiksss/fitness-analytics/edit/main/screens%20(1).png))
+В репозитории находится серия файлов вида:screens (-).png
+Ниже следует список(описание скриншота - название скриншота)
+Query статистика активности - screens (1).png
 ![Query живой мониторинг](screens (2).png)
 ![Query топ пользователей](screens (3).png)
 ![Query последние события](screens (4).png)
