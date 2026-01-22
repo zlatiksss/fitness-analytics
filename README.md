@@ -1,6 +1,6 @@
 # Fitness Analytics System
 **Полноценная End-to-End система фитнес-аналитики в реальном времени**  
-Генерация данных(py-script) → PostgreSQL → Redash + дашборды 
+Генерация данных(py-script) → PostgreSQL → дашборды в Redash → анализ данных в jupyter
 
 
 
@@ -8,14 +8,15 @@
 
 C:\fitness-analytics\
 ├── docker-compose.yml # контейнер хранения системы\
-├── generator/ # Генератор фитнес-данных \
+├── generator/ # Генератор фитнес-данных\
 │ ├── Dockerfile # Запись образа генератора\
-│ ├── requirements.txt # Установка psycopg2-binary==2.9.9 в Dockerfile
-│ │\
+│ ├── requirements.txt # Установка psycopg2-binary==2.9.9 в Dockerfile\
 │ └── fitness_generator.py\
-│\
-├──README.md
-│\
+├── notebooks/ # Jupyter Notebooks и HTML-визуализации\
+│ ├── activity_histogram.html\
+│ ├──hourly_activity.html\
+│ └── fitness_analysis.ipynb\
+├── README.md\
 └── screens.png
 
 
@@ -52,7 +53,11 @@ C:\fitness-analytics\
 # Полная очистка (удаление всех данных)
 >docker compose down -v
 
-***После полного запуска системы, в браузере, переходим по следующей ссылке: http://localhost:8080***
+***После полного запуска системы, в браузере, можем перейти по следующим ссыылкам: http://localhost:8080 -сервис Redash с дашбордом, http://localhost:8888 -сервис jupyter c notebook***
+
+## Перейдём к просмотру notebook:
+В репозитории находится файл fitness_analysis.ipynb, в нём содержится анализ данных через запросы в БД 
+
 
 ## Перейдём к просмотру дашборда и их Query:
 В репозитории находится серия файлов вида:screens (-).png
